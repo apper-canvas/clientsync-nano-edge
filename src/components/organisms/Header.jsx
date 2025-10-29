@@ -2,8 +2,9 @@ import React from "react";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
-
+import { useAuth } from "@/layouts/Root";
 const Header = ({ onMenuToggle, title }) => {
+  const { logout } = useAuth();
   return (
     <header className="bg-white border-b border-slate-200 shadow-soft lg:ml-64">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -26,7 +27,7 @@ const Header = ({ onMenuToggle, title }) => {
             )}
           </div>
 
-          {/* Right side - Actions */}
+{/* Right side - Actions */}
           <div className="flex items-center space-x-3">
             <Button
               variant="ghost"
@@ -45,6 +46,15 @@ const Header = ({ onMenuToggle, title }) => {
               className="p-2 hover:bg-slate-100"
             >
               <ApperIcon name="Settings" className="h-5 w-5 text-slate-600" />
+            </Button>
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-2 hover:bg-slate-100"
+              onClick={logout}
+            >
+              <ApperIcon name="LogOut" className="h-5 w-5 text-slate-600" />
             </Button>
           </div>
         </div>
